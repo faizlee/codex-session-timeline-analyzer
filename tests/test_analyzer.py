@@ -30,7 +30,7 @@ class AnalyzeCodexSessionTimelineTests(unittest.TestCase):
                         "type": "session_meta",
                         "payload": {
                             "session_id": "session-1",
-                            "cwd": "E:/work/project/sample-project",
+                            "cwd": "/workspace/sample-project",
                             "originator": "Codex Desktop",
                         },
                     },
@@ -49,7 +49,7 @@ class AnalyzeCodexSessionTimelineTests(unittest.TestCase):
                             "arguments": json.dumps(
                                 {
                                     "command": "Start-Sleep -Seconds 3",
-                                    "workdir": "E:/work/project/sample-project",
+                                    "workdir": "/workspace/sample-project",
                                     "timeout_ms": 10000,
                                 }
                             ),
@@ -81,7 +81,7 @@ class AnalyzeCodexSessionTimelineTests(unittest.TestCase):
 
         call = report["tool_calls"][0]
         self.assertEqual(call["command"], "Start-Sleep -Seconds 3")
-        self.assertEqual(call["workdir"], "E:/work/project/sample-project")
+        self.assertEqual(call["workdir"], "/workspace/sample-project")
         self.assertEqual(call["timeout_ms"], 10000)
         self.assertEqual(call["exit_code"], 0)
 
@@ -398,8 +398,8 @@ class AnalyzeCodexSessionTimelineTests(unittest.TestCase):
 
     def test_filter_reports_by_project_matches_cwd(self) -> None:
         reports = [
-            {"metadata": {"cwd": "E:/work/project/sample-project", "session_id": "sample"}, "summary": {"started_at": ""}, "log_path": "sample.jsonl"},
-            {"metadata": {"cwd": "E:/work/project/other-project", "session_id": "other"}, "summary": {"started_at": ""}, "log_path": "other.jsonl"},
+            {"metadata": {"cwd": "/workspace/sample-project", "session_id": "sample"}, "summary": {"started_at": ""}, "log_path": "sample.jsonl"},
+            {"metadata": {"cwd": "/workspace/other-project", "session_id": "other"}, "summary": {"started_at": ""}, "log_path": "other.jsonl"},
         ]
 
         filtered = filter_reports_by_project(reports, "sample-project")
