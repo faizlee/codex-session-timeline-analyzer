@@ -1,0 +1,8 @@
+{"timestamp":"2026-06-30T00:00:00.000Z","type":"session_meta","payload":{"session_id":"sample-maintainer-session","cwd":"/workspace/example-oss-project","originator":"Codex Desktop"}}
+{"timestamp":"2026-06-30T00:00:01.000Z","type":"event_msg","payload":{"type":"task_started","turn_id":"turn-review-1"}}
+{"timestamp":"2026-06-30T00:00:01.500Z","type":"event_msg","payload":{"type":"user_message","message":"review failing release workflow"}}
+{"timestamp":"2026-06-30T00:00:02.000Z","type":"response_item","payload":{"type":"function_call","name":"shell_command","call_id":"call_tests","arguments":"{\"command\":\"pytest tests/test_release.py\",\"workdir\":\"/workspace/example-oss-project\",\"timeout_ms\":60000}"}}
+{"timestamp":"2026-06-30T00:00:18.000Z","type":"response_item","payload":{"type":"function_call_output","call_id":"call_tests","output":"Exit code: 1\nWall time: 15.4 seconds\nOutput:\nFAILED tests/test_release.py::test_changelog\n"}}
+{"timestamp":"2026-06-30T00:00:24.000Z","type":"event_msg","payload":{"type":"token_count","info":{"last_token_usage":{"input_tokens":42000,"cached_input_tokens":30000,"output_tokens":900,"reasoning_output_tokens":1200,"total_tokens":44100}}}}
+{"timestamp":"2026-06-30T00:00:25.000Z","type":"event_msg","payload":{"type":"agent_message","message":"release workflow failure is in changelog validation"}}
+{"timestamp":"2026-06-30T00:00:26.000Z","type":"event_msg","payload":{"type":"task_complete","turn_id":"turn-review-1"}}

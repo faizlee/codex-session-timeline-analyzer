@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+dist/
+build/
+*.egg-info/
+reports/
+*.html
+*.json
+!examples/*.jsonl
+!examples/*.md
